@@ -81,7 +81,7 @@ app.post('/dialogflow-webhook', async (req, res) => {
 
         // Prepare Dialogflow response format
         const dialogflowResponse = {
-            fulfillmentMessages: aiResponse,
+            fulfillmentMessages: [aiResponse],
             outputContexts: [
                 {
                     name: `${sessionId}/contexts/session-vars`,
