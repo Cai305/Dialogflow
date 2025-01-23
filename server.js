@@ -63,13 +63,7 @@ app.post('/dialogflow-webhook', async (req, res) => {
 
         // Prepare Dialogflow response format
         const dialogflowResponse = {
-            fulfillmentMessages: [
-                {
-                    text: {
-                        text: [aiResponse]
-                    }
-                }
-            ],
+            fulfillmentMessages: aiResponse,
             payload: {
                 google: {
                     expectUserResponse: true
