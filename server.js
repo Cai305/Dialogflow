@@ -81,7 +81,13 @@ app.post('/dialogflow-webhook', async (req, res) => {
 
         // Prepare Dialogflow response format
         const dialogflowResponse = {
-            fulfillmentMessages: [aiResponse],
+            fulfillmentMessages: [
+                {
+                    text: {
+                        text: [aiResponse]
+                    }
+                }
+            ],
             outputContexts: [
                 {
                     name: `${sessionId}/contexts/session-vars`,
@@ -100,7 +106,13 @@ app.post('/dialogflow-webhook', async (req, res) => {
     } catch (error) {
         console.error('Dialogflow Webhook Error:', error.message);
         res.status(200).json({
-            fulfillmentMessages: "Sorry, we're experiencing technical difficulties. Please try again later."
+            fulfillmentMessages: [
+                {
+                    text: {
+                        text: ["Sorry, we're experiencing technical difficulties. Please try again later."]
+                    }
+                }
+            ]
         });
     }
 });
